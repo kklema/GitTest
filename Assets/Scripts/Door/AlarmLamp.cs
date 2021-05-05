@@ -19,18 +19,18 @@ public class AlarmLamp : MonoBehaviour
         _startColor = _spriteRenderer.color;
     }
 
-    private void Update()
-    {
-        _time += Time.deltaTime;
-    }
-
     private IEnumerator ChangeAlarmColor()
     {
-        var newWaitForSeconds = new WaitForSeconds(1f);
+        if (_time <= _lerpTime)
+        {
+            var newWaitForSeconds = new WaitForSeconds(0.5f);
+            _time += Time.deltaTime;
+            float normalizeLerpTime = _time / _lerpTime;
 
-        _spriteRenderer.color = Color.Lerp(_startColor, _targetColor, _lerpTime * _time);
+            _spriteRenderer.color = Color.Lerp(_spriteRenderer.color, _targetColor, normalizeLerpTime);
 
-        yield return newWaitForSeconds;
+            yield return null;
+        }
     }
 
     public void StartChangeColor()
@@ -41,5 +41,6 @@ public class AlarmLamp : MonoBehaviour
     public void StopChangeColor()
     {
         StopCoroutine(ChangeAlarmColor());
+        _spriteRenderer.color = _startColor;
     }
 }

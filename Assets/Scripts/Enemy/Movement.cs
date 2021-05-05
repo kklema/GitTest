@@ -25,7 +25,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         Transform target = _points[_currentPoint];
