@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class AlarmZone : MonoBehaviour
 {
+    [SerializeField] private float _speedChange;
+
     private AudioSource _audioAlarm;
     private AlarmLamp _colorAlarm;
     private Collider2D _enemyCollider;
@@ -22,6 +24,8 @@ public class AlarmZone : MonoBehaviour
         _audioAlarm = GetComponent<AudioSource>();
         _colorAlarm = GetComponentInChildren<AlarmLamp>();
         _audioAlarm.volume = 0;
+        _speedChange = 1f;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,29 +55,11 @@ public class AlarmZone : MonoBehaviour
     {
         while (_coroutineIslooped)
         {
-            float maxVolume = 1f;
-            float minVolume = 0f;
-            float speedOfVolumeChange = 1f;
-            float passedTime = 0;
-
-            while (speedOfVolumeChange > passedTime)
+            if (_audioAlarm.isPlaying)
             {
-                Debug.Log("Корутина звука включена");
+                _audioAlarm.volume = Mathf.PingPong(Time.time, _speedChange);
 
-                passedTime += Time.deltaTime;
-                float lerpPercentage = passedTime / speedOfVolumeChange;
-
-                if (_audioAlarm.isPlaying)
-                {
-                    _audioAlarm.volume = Mathf.Lerp(minVolume, maxVolume, lerpPercentage);
-
-                    if (_audioAlarm.volume == maxVolume)
-                    {
-                        _audioAlarm.volume = minVolume;
-                    }
-
-                    yield return null;
-                }
+                yield return null;
             }
         }
     }

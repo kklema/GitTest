@@ -10,7 +10,6 @@ public class AlarmLamp : MonoBehaviour
     [SerializeField] private Color _currentColor;
     [SerializeField] private float _speedChangings;
 
-
     private bool _coroutinIsLooped;
     private float _passedTime;
 
@@ -30,8 +29,6 @@ public class AlarmLamp : MonoBehaviour
 
             while (_passedTime < _speedChangings)
             {
-                Debug.Log("Смена цвета началась");
-
                 _passedTime += Time.deltaTime;
                 float lerpPercentage = _passedTime / _speedChangings;
                 var newWaitForSeconds = new WaitForSeconds(0.01f);
@@ -40,7 +37,6 @@ public class AlarmLamp : MonoBehaviour
 
                 yield return newWaitForSeconds;
             }
-            Debug.Log("Смена цвета закончилась");
 
             _spriteRenderer.color = _startColor;
         }
