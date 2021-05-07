@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class AlarmLamp : MonoBehaviour
 {
-    private SpriteRenderer _spriteRenderer;
-
-    [SerializeField] [Range(0, 1)] private float _lerpTime;
-
+    [SerializeField] private Color _startColor;
     [SerializeField] private Color _targetColor;
+    [SerializeField] private Color _currentColor;
+    [SerializeField] private float _speedChangings;
 
-    private Color _startColor;
-    private float _time;
+
+    private bool _coroutinIsLooped;
+    private float _passedTime;
+
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
@@ -21,26 +24,37 @@ public class AlarmLamp : MonoBehaviour
 
     private IEnumerator ChangeAlarmColor()
     {
-        if (_time <= _lerpTime)
+        while (_coroutinIsLooped)
         {
-            var newWaitForSeconds = new WaitForSeconds(0.5f);
-            _time += Time.deltaTime;
-            float normalizeLerpTime = _time / _lerpTime;
+            _passedTime = 0f;
 
-            _spriteRenderer.color = Color.Lerp(_spriteRenderer.color, _targetColor, normalizeLerpTime);
+            while (_passedTime < _speedChangings)
+            {
+                Debug.Log("Смена цвета началась");
 
-            yield return null;
+                _passedTime += Time.deltaTime;
+                float lerpPercentage = _passedTime / _speedChangings;
+                var newWaitForSeconds = new WaitForSeconds(0.01f);
+
+                _spriteRenderer.color = Color.Lerp(_startColor, _targetColor, lerpPercentage);
+
+                yield return newWaitForSeconds;
+            }
+            Debug.Log("Смена цвета закончилась");
+
+            _spriteRenderer.color = _startColor;
         }
     }
 
     public void StartChangeColor()
     {
+        _coroutinIsLooped = true;
         StartCoroutine(ChangeAlarmColor());
     }
 
     public void StopChangeColor()
     {
+        _coroutinIsLooped = false;
         StopCoroutine(ChangeAlarmColor());
-        _spriteRenderer.color = _startColor;
     }
 }

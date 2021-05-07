@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Collider2D))]
 public class AlarmZone : MonoBehaviour
 {
     private AudioSource _audioAlarm;
     private AlarmLamp _colorAlarm;
-    private float _alarmTimer;
-    private bool _isVolumeIncreased;
+    private Collider2D _enemyCollider;
+
+    private bool _coroutineIslooped;
+
+    private void Awake()
+    {
+        _enemyCollider = GameObject.FindObjectOfType<Enemy>().GetComponent<Collider2D>();
+    }
 
     private void Start()
     {
@@ -18,51 +26,53 @@ public class AlarmZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
+        if (collision == _enemyCollider)
         {
             _audioAlarm.Play();
+            _coroutineIslooped = true;
+            StartCoroutine(ChangeAlarmVolume());
             _colorAlarm.StartChangeColor();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
+        if (collision == _enemyCollider)
         {
             _audioAlarm.Stop();
+            _coroutineIslooped = false;
+            StopCoroutine(ChangeAlarmVolume());
             _audioAlarm.volume = 0;
-            _alarmTimer = 0;
             _colorAlarm.StopChangeColor();
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private IEnumerator ChangeAlarmVolume()
     {
-        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
+        while (_coroutineIslooped)
         {
             float maxVolume = 1f;
             float minVolume = 0f;
-            _alarmTimer += Time.deltaTime / 5;
+            float speedOfVolumeChange = 1f;
+            float passedTime = 0;
 
-            if (_audioAlarm.isPlaying)
+            while (speedOfVolumeChange > passedTime)
             {
-                _audioAlarm.volume += _alarmTimer;
-                if (_audioAlarm.volume >= maxVolume && _isVolumeIncreased == true)
-                {
-                    _isVolumeIncreased = false;
-                }
-                else if (_isVolumeIncreased == false)
-                {
-                    _audioAlarm.volume += -_alarmTimer;
-                    if (_audioAlarm.volume <= minVolume)
-                    {
-                        _isVolumeIncreased = true;
-                    }
-                }
+                Debug.Log("Корутина звука включена");
 
-                if (_alarmTimer > maxVolume)
+                passedTime += Time.deltaTime;
+                float lerpPercentage = passedTime / speedOfVolumeChange;
+
+                if (_audioAlarm.isPlaying)
                 {
-                    _alarmTimer = minVolume;
+                    _audioAlarm.volume = Mathf.Lerp(minVolume, maxVolume, lerpPercentage);
+
+                    if (_audioAlarm.volume == maxVolume)
+                    {
+                        _audioAlarm.volume = minVolume;
+                    }
+
+                    yield return null;
                 }
             }
         }
