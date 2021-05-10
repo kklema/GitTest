@@ -11,15 +11,15 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        CreateNewObject();
+        StartSpawnCoroutine();
     }
 
-    private void CreateNewObject()
+    private void StartSpawnCoroutine()
     {
-        StartCoroutine(MakeSpawn());
+        StartCoroutine(MakeLoopSpawn());
     }
 
-    private IEnumerator MakeSpawn()
+    private IEnumerator MakeLoopSpawn()
     {
         var waitForSeconds = new WaitForSeconds(_spawnTime);
 

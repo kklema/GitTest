@@ -9,45 +9,38 @@ public class AlarmZone : MonoBehaviour
     [SerializeField] private float _speedChange;
 
     private AudioSource _audioAlarm;
-    private AlarmLamp _colorAlarm;
-    private Collider2D _enemyCollider;
+    private AlarmLamp _alarmLamp;
 
     private bool _coroutineIslooped;
-
-    private void Awake()
-    {
-        _enemyCollider = GameObject.FindObjectOfType<Enemy>().GetComponent<Collider2D>();
-    }
 
     private void Start()
     {
         _audioAlarm = GetComponent<AudioSource>();
-        _colorAlarm = GetComponentInChildren<AlarmLamp>();
+        _alarmLamp = GetComponentInChildren<AlarmLamp>();
         _audioAlarm.volume = 0;
         _speedChange = 1f;
-
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collision == _enemyCollider)
+        if (collider2D.TryGetComponent<Enemy>(out Enemy enemy))
         {
             _audioAlarm.Play();
             _coroutineIslooped = true;
             StartCoroutine(ChangeAlarmVolume());
-            _colorAlarm.StartChangeColor();
+            _alarmLamp.StartChangeColor();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (collision == _enemyCollider)
+        if (collider2D.TryGetComponent<Enemy>(out Enemy enemy))
         {
             _audioAlarm.Stop();
             _coroutineIslooped = false;
             StopCoroutine(ChangeAlarmVolume());
             _audioAlarm.volume = 0;
-            _colorAlarm.StopChangeColor();
+            _alarmLamp.StopChangeColor();
         }
     }
 

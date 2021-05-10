@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -10,12 +12,13 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private int _currentPoint;
     private Transform[] _points;
-    private SpriteRenderer _spriterenderer;
+    private SpriteRenderer _spriteRenderer;
+    private Transform _target;
 
-    void Start()
+    private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _spriterenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _points = new Transform[_waypoints.Length];
 
@@ -25,15 +28,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-        Transform target = _points[_currentPoint];
+        _target = _points[_currentPoint];
 
-        Flip(target);
+        Flip();
 
-        transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
 
-        if (transform.position == target.position)
+        if (transform.position == _target.position)
         {
             _currentPoint++;
 
@@ -42,20 +45,16 @@ public class Movement : MonoBehaviour
                 _currentPoint = 0;
             }
         }
-
-        //_rigidbody2D.velocity = transform.right * _speed;
     }
 
-    private void Flip(Transform target)
+    private void Flip()
     {
-        if (transform.position.x < target.position.x)
+        if (transform.position.x < _target.position.x)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-            //_spriterenderer.flipX = true;
         }
-        else if (transform.position.x > target.position.x)
+        else if (transform.position.x > _target.position.x)
         {
-            //_spriterenderer.flipX = false;
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }

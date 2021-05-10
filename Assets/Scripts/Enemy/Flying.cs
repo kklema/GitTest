@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Flying : MonoBehaviour
 {
-    [SerializeField] float _speed;
+    [SerializeField] private float _speed;
 
     private Rigidbody2D _rigidody2D;
 
