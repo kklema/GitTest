@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(Collider2D))]
 public class AlarmZone : MonoBehaviour
 {
     [SerializeField] private float _speedChange;
 
     private AudioSource _audioAlarm;
-    private AlarmLamp _alarmLamp;
+    private Coroutine _volumeChangerWork;
 
-    private bool _coroutineIslooped;
+    private bool _coroutineIsLooped;
 
     private void Start()
     {
         _audioAlarm = GetComponent<AudioSource>();
-        _alarmLamp = GetComponentInChildren<AlarmLamp>();
         _audioAlarm.volume = 0;
         _speedChange = 1f;
     }
@@ -26,9 +24,7 @@ public class AlarmZone : MonoBehaviour
         if (collider2D.TryGetComponent<Enemy>(out Enemy enemy))
         {
             _audioAlarm.Play();
-            _coroutineIslooped = true;
-            StartCoroutine(ChangeAlarmVolume());
-            _alarmLamp.StartChangeColor();
+            _volumeChangerWork = StartCoroutine(ChangeAlarmVolume());
         }
     }
 
@@ -37,16 +33,16 @@ public class AlarmZone : MonoBehaviour
         if (collider2D.TryGetComponent<Enemy>(out Enemy enemy))
         {
             _audioAlarm.Stop();
-            _coroutineIslooped = false;
-            StopCoroutine(ChangeAlarmVolume());
+            StopCoroutine(_volumeChangerWork);
             _audioAlarm.volume = 0;
-            _alarmLamp.StopChangeColor();
         }
     }
 
     private IEnumerator ChangeAlarmVolume()
     {
-        while (_coroutineIslooped)
+        _coroutineIsLooped = true;
+
+        while (_coroutineIsLooped)
         {
             if (_audioAlarm.isPlaying)
             {

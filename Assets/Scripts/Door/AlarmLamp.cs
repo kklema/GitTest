@@ -12,7 +12,9 @@ public class AlarmLamp : MonoBehaviour
 
     private bool _coroutinIsLooped;
     private float _passedTime;
+    private float _cooldown = 0.01f;
 
+    private Coroutine _colorchangerWork;
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
@@ -21,8 +23,27 @@ public class AlarmLamp : MonoBehaviour
         _startColor = _spriteRenderer.color;
     }
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            _colorchangerWork = StartCoroutine(ChangeAlarmColor());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            StopCoroutine(_colorchangerWork);
+            _spriteRenderer.color = _startColor;
+        }
+    }
+
     private IEnumerator ChangeAlarmColor()
     {
+        _coroutinIsLooped = true;
+
         while (_coroutinIsLooped)
         {
             _passedTime = 0f;
@@ -31,7 +52,7 @@ public class AlarmLamp : MonoBehaviour
             {
                 _passedTime += Time.deltaTime;
                 float lerpPercentage = _passedTime / _speedChangings;
-                var newWaitForSeconds = new WaitForSeconds(0.01f);
+                var newWaitForSeconds = new WaitForSeconds(_cooldown);
 
                 _spriteRenderer.color = Color.Lerp(_startColor, _targetColor, lerpPercentage);
 
@@ -40,17 +61,5 @@ public class AlarmLamp : MonoBehaviour
 
             _spriteRenderer.color = _startColor;
         }
-    }
-
-    public void StartChangeColor()
-    {
-        _coroutinIsLooped = true;
-        StartCoroutine(ChangeAlarmColor());
-    }
-
-    public void StopChangeColor()
-    {
-        _coroutinIsLooped = false;
-        StopCoroutine(ChangeAlarmColor());
     }
 }

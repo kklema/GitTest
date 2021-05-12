@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(SpriteRenderer))]
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -12,13 +11,11 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private int _currentPoint;
     private Transform[] _points;
-    private SpriteRenderer _spriteRenderer;
     private Transform _target;
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _points = new Transform[_waypoints.Length];
 
@@ -28,7 +25,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         _target = _points[_currentPoint];
 

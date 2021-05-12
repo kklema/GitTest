@@ -11,12 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartSpawnCoroutine();
-    }
-
-    private void StartSpawnCoroutine()
-    {
-        StartCoroutine(MakeLoopSpawn());
+        var spawnerWork = StartCoroutine(MakeLoopSpawn());
     }
 
     private IEnumerator MakeLoopSpawn()

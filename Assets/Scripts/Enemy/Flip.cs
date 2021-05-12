@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Flying : MonoBehaviour
+public class Flip : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    private SpriteRenderer _spriteRenderer;
+    private Rigidbody2D _rb2D;
 
-    private Rigidbody2D _rigidody2D;
+    private float _speed;
 
     private void Start()
     {
-        _rigidody2D = GetComponent<Rigidbody2D>();
+        _rb2D = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Flip();
-        _rigidody2D.velocity = new Vector2(_speed, 0);
+        TurnSide();
     }
 
-    private void Flip()
+    private void TurnSide()
     {
-        if (_speed > 0)
+        if (_rb2D.velocity.x > 0f)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (_speed < 0)
+        else if (_rb2D.velocity.x < 0f)
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }

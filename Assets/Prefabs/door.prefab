@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c9c31fef81f75409f374647fe5720f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedChange: 1
 --- !u!82 &4673498884555776695
 AudioSource:
   m_ObjectHideFlags: 0
@@ -84,9 +85,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c1b5a3aed3dbb5b42b48f5144cfb6391, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.142
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -334,6 +335,7 @@ GameObject:
   - component: {fileID: 8627731764332162948}
   - component: {fileID: 8791170959531679000}
   - component: {fileID: 93213442}
+  - component: {fileID: 2078754539}
   m_Layer: 0
   m_Name: Alarm Lamp
   m_TagString: Untagged
@@ -348,13 +350,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8133379460112645292}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.1654556, y: 1.2800043, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1.19, y: 1.35, z: 0}
   m_LocalScale: {x: -5.1251407, y: 3.711642, z: 0}
   m_Children: []
   m_Father: {fileID: 3997351664275111949}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &8791170959531679000
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -397,7 +399,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bd59bf2e866ed4529ae645637eb9c11d, type: 3}
-  m_Color: {r: 1, g: 0.98039216, b: 0.98039216, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -419,5 +421,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58357278ac7cd24478f05048c48ce343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetColor: {r: 0, g: 0, b: 0, a: 1}
-  _duration: 1
+  _startColor: {r: 1, g: 1, b: 1, a: 1}
+  _targetColor: {r: 1, g: 0, b: 0, a: 1}
+  _currentColor: {r: 0, g: 0, b: 0, a: 0}
+  _speedChangings: 1
+--- !u!61 &2078754539
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133379460112645292}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.25932318, y: 0.74468136}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.15, y: 0.13}
+    newSize: {x: 0.15, y: 0.13}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4207977, y: 2.1137044}
+  m_EdgeRadius: 0

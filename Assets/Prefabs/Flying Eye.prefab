@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 343362759783024109}
   - component: {fileID: 343362759783024105}
   - component: {fileID: 343362759783024110}
+  - component: {fileID: 8837218272425405432}
   m_Layer: 0
   m_Name: Flying Eye
   m_TagString: Untagged
@@ -139,3 +140,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
+--- !u!114 &8837218272425405432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343362759783024114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de55fa31a23cfc42b09f21220ce515a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
