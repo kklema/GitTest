@@ -1476,37 +1476,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 93213442, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
-      propertyPath: _duration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 93213442, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
-      propertyPath: _lerpTime
-      value: 0.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 93213442, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
-      propertyPath: _targetColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 93213442, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
-      propertyPath: _targetColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 93213442, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
-      propertyPath: _targetColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4428192062880678965, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
       propertyPath: m_Name
       value: DoorPref
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673498884555776695, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673498884555776695, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
-      propertyPath: m_Volume
-      value: 0.142
       objectReference: {fileID: 0}
     - target: {fileID: 8857012067539756929, guid: 65f26b111b15ed342a5d99d7a2a5124f, type: 3}
       propertyPath: m_RootOrder
@@ -1604,22 +1576,6 @@ PrefabInstance:
     - target: {fileID: 275109269528863047, guid: 5dc5300dd1b63fc4b93a060a38af5cb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2002310761810898793, guid: 5dc5300dd1b63fc4b93a060a38af5cb6, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2350469745700673345, guid: 5dc5300dd1b63fc4b93a060a38af5cb6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826971837876080937, guid: 5dc5300dd1b63fc4b93a060a38af5cb6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675959213055680847, guid: 5dc5300dd1b63fc4b93a060a38af5cb6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.98
       objectReference: {fileID: 0}
     - target: {fileID: 7361415029901466274, guid: 5dc5300dd1b63fc4b93a060a38af5cb6, type: 3}
       propertyPath: m_Name

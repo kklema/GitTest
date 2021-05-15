@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2453170141825773070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.98, y: -0.22, z: 0}
+  m_LocalPosition: {x: 9.12, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2586528396986229765}
@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4566080672025496854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.53, y: -0.22, z: 0}
+  m_LocalPosition: {x: 2.11, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2586528396986229765}
@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1248034727571478706}
   - component: {fileID: 9033764239357114717}
   - component: {fileID: 7604830986569873078}
+  - component: {fileID: 1817545661052670508}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -274,6 +275,18 @@ MonoBehaviour:
   _waypoints:
   - {fileID: 4675959213055680847}
   - {fileID: 3826971837876080937}
+--- !u!114 &1817545661052670508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107184339620662275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de55fa31a23cfc42b09f21220ce515a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7361415029901466274
 GameObject:
   m_ObjectHideFlags: 0
