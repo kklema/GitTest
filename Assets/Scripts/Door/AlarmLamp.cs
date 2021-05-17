@@ -10,7 +10,6 @@ public class AlarmLamp : MonoBehaviour
     [SerializeField] private Color _currentColor;
     [SerializeField] private float _speedChangings;
 
-    private bool _coroutinIsLooped;
     private float _passedTime;
     private float _cooldown = 0.01f;
 
@@ -42,9 +41,7 @@ public class AlarmLamp : MonoBehaviour
 
     private IEnumerator ChangeAlarmColor()
     {
-        _coroutinIsLooped = true;
-
-        while (_coroutinIsLooped)
+        while (true)
         {
             _passedTime = 0f;
 

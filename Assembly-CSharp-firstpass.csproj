@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{05EBBE8F-D2AC-EBBB-0162-98E806DF8E47}</ProjectGuid>
+    <ProjectGuid>{BBE44BA7-D5D3-F005-95FB-FED377B95C20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -779,7 +779,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Recorder.Samples.Editor.csproj">
-      <Project>{7469CAB2-C310-5204-D0EA-1A050C2AED3D}</Project>
+      <Project>{976AEB68-49E4-AF78-3477-B1B4FDC12D7B}</Project>
       <Name>Unity.Recorder.Samples.Editor</Name>
     </ProjectReference>
   </ItemGroup>

@@ -109,8 +109,6 @@
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
--r:"C:/Users/KING/Desktop/Unity Project/2D Learning/Library/PackageCache/com.unity.visualscripting@1.5.2/Runtime/VisualScripting.Core/Dependencies/MiscUtil/MiscUtil.dll"
--r:"C:/Users/KING/Desktop/Unity Project/2D Learning/Library/PackageCache/com.unity.visualscripting@1.5.2/Runtime/VisualScripting.Flow/Dependencies/NCalc/Antlr3.Runtime.dll"
 -r:"E:/Program Files (x86)/Unity/2021.1.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"E:/Program Files (x86)/Unity/2021.1.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"E:/Program Files (x86)/Unity/2021.1.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.dll"
@@ -303,6 +301,8 @@
 -r:"E:/Program Files (x86)/Unity/2021.1.4f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Numerics.Vectors.dll"
 -r:"E:/Program Files (x86)/Unity/2021.1.4f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"E:/Program Files (x86)/Unity/2021.1.4f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
+-r:"G:/GitRepos/GitTest/Library/PackageCache/com.unity.visualscripting@1.5.2/Runtime/VisualScripting.Core/Dependencies/MiscUtil/MiscUtil.dll"
+-r:"G:/GitRepos/GitTest/Library/PackageCache/com.unity.visualscripting@1.5.2/Runtime/VisualScripting.Flow/Dependencies/NCalc/Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/PsdPlugin.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.2D.Animation.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.2D.Animation.Runtime.ref.dll"

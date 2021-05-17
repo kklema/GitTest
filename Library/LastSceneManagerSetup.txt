@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Spawner.unity
+- path: Assets/Alarm.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

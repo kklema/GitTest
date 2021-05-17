@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{7469CAB2-C310-5204-D0EA-1A050C2AED3D}</ProjectGuid>
+    <ProjectGuid>{976AEB68-49E4-AF78-3477-B1B4FDC12D7B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.Recorder.Samples.Editor</AssemblyName>
