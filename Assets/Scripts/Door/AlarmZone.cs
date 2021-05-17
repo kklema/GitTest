@@ -10,8 +10,6 @@ public class AlarmZone : MonoBehaviour
     private AudioSource _audioAlarm;
     private Coroutine _volumeChangerWork;
 
-    private bool _coroutineIsLooped;
-
     private void Start()
     {
         _audioAlarm = GetComponent<AudioSource>();
@@ -40,9 +38,7 @@ public class AlarmZone : MonoBehaviour
 
     private IEnumerator ChangeAlarmVolume()
     {
-        _coroutineIsLooped = true;
-
-        while (_coroutineIsLooped)
+        while (true)
         {
             if (_audioAlarm.isPlaying)
             {
